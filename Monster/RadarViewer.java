@@ -17,13 +17,15 @@ public class RadarViewer
         // create the radar, set the monster location, and perform the initial scan
         final int ROWS = 100;
         final int COLS = 100;
-        Radar radar = new Radar(ROWS, COLS);
+        final int DX = 1;
+        final int DY = 1;
+        Radar radar = new Radar(ROWS, COLS, DX, DY);
         radar.setNoiseFraction(0.10);
         radar.scan();
         
         JFrame frame = new JFrame();
         
-        frame.setTitle("Signals in Noise Lab");
+        frame.setTitle("Mihir's Signals in Noise Lab");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // a frame contains a single component; create the radar component and add it to the frame
@@ -46,6 +48,8 @@ public class RadarViewer
             radar.scan();
             
             frame.repaint();
+            
+            radar.moveMonster();
         }
     }
 
