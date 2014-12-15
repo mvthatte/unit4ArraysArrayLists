@@ -58,7 +58,7 @@ public class Radar
      * Performs a scan of the radar. Noise is injected into the grid and the accumulator is updated.
      * 
      */
-    public void scan()
+    public void scan(int dx, int dy)
     {
         // zero the current scan grid
         for(int row = 0; row < currentScan.length; row++)
@@ -69,6 +69,30 @@ public class Radar
             }
         }
         
+        for (int row = 0; row < currentScan.length; row++)
+        {
+            for (int col = 0; col < currentScan[0].length; col++)
+            {
+                if (currentScan[row][col] == true && prevScan[row][col] == true)
+                {
+                    for (int row2 = 0; row2 < prevScan.length; row2++)
+                    {
+                        for (int col2 = 0; col2 < prevScan[0].length; col2++)
+                        {
+                            int dxchecker = row - row2;
+                            int dychecker = col - col2;
+                            if (dxchecker == dx && dychecker == dy)
+                            {
+                                String monsterReturn = "The monster's dx is" + dx + "and the monster's dy is "+ dy;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        
+               
         // detect the monster
         currentScan[monsterLocationRow][monsterLocationCol] = true;
         
@@ -86,6 +110,7 @@ public class Radar
                 }
             }
         }
+<<<<<<< HEAD
         
                 for(int row = 0; row < currentScan.length; row++)
         {
@@ -98,6 +123,10 @@ public class Radar
             }
         }
         
+=======
+         //Move the monster
+         moveMonster();
+>>>>>>> origin/master
 
         
         // keep track of the total number of scans
