@@ -87,6 +87,17 @@ public class Radar
             }
         }
         
+                for(int row = 0; row < currentScan.length; row++)
+        {
+            for(int col = 0; col < currentScan[0].length; col++)
+            {
+                if(currentScan[row][col] == true)
+                {
+                   accumulator[row][col]++;
+                }
+            }
+        }
+        
 
         
         // keep track of the total number of scans

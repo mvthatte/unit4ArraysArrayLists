@@ -50,6 +50,8 @@ public class RadarViewer
             frame.repaint();
             
             radar.moveMonster();
+            
+            radar.setprevScan();
         }
     }
 
