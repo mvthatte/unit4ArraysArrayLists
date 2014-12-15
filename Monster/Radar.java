@@ -69,6 +69,27 @@ public class Radar
             }
         }
         
+        for (int row = 0; row < currentScan.length; row++)
+        {
+            for (int col = 0; col < currentScan[0].length; col++)
+            {
+                if (currentScan[row][col] == true && prevScan[row][col] == true)
+                {
+                    for (int row2 = 0; row2 < prevScan.length; row2++)
+                    {
+                        for (int col2 = 0; col2 < prevScan[0].length; col2++)
+                        {
+                            dxchecker = row - row2;
+                            dychecker = col - col2;
+                            if (dxchecker == dx && dychecker == dy)
+                            [
+                                
+                        }
+                    }
+                }
+            }
+        }
+               
         // detect the monster
         currentScan[monsterLocationRow][monsterLocationCol] = true;
         
@@ -86,7 +107,8 @@ public class Radar
                 }
             }
         }
-        
+         //Move the monster
+         moveMonster();
 
         
         // keep track of the total number of scans
