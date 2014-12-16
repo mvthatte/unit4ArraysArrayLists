@@ -60,77 +60,77 @@ public class Radar
      */
     public void scan(int dx, int dy)
     {
-        // zero the current scan grid
-        for(int row = 0; row < currentScan.length; row++)
-        {
-            for(int col = 0; col < currentScan[0].length; col++)
+            for(int row = 0; row < currentScan.length; row++)
             {
-                currentScan[row][col] = false;
-            }
-        }
-        
-        for (int row = 0; row < currentScan.length; row++)
-        {
-            for (int col = 0; col < currentScan[0].length; col++)
-            {
-                if (currentScan[row][col] == true && prevScan[row][col] == true)
+                for(int col = 0; col < currentScan[0].length; col++)
                 {
-                    for (int row2 = 0; row2 < prevScan.length; row2++)
+                    currentScan[row][col] = false;
+                }
+            }
+            
+            for (int row = 0; row < currentScan.length; row++)
+            {
+                for (int col = 0; col < currentScan[0].length; col++)
+                {
+                    if (currentScan[row][col] == true && prevScan[row][col] == true)
                     {
-                        for (int col2 = 0; col2 < prevScan[0].length; col2++)
+                        for (int row2 = 0; row2 < prevScan.length; row2++)
                         {
-                            int dxchecker = row - row2;
-                            int dychecker = col - col2;
-                            if (dxchecker == dx && dychecker == dy)
+                            for (int col2 = 0; col2 < prevScan[0].length; col2++)
                             {
-                                String monsterReturn = "The monster's dx is" + dx + "and the monster's dy is "+ dy;
+                                int dxchecker = row - row2;
+                                int dychecker = col - col2;
+                                if (dxchecker == dx && dychecker == dy)
+                                {
+                                    String monsterReturn = "The monster's dx is" + dx + "and the monster's dy is "+ dy;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
+        
+            
+                   
+            //detect the monster
+            if (monsterLocationRow < 99 && monsterLocationCol < 99)
+            {
+                currentScan[monsterLocationRow][monsterLocationCol] = true;
+            }        
+            //inject noise into the grid
+            injectNoise();
+            
+            //udpate the accumulator
+            for(int row = 0; row < currentScan.length; row++)
+            {
+                for(int col = 0; col < currentScan[0].length; col++)
+                {
+                    if(currentScan[row][col] == true)
+                    {
+                       accumulator[row][col]++;
+                    }
+                }
+            }
+            
+                    for(int row = 0; row < currentScan.length; row++)
+            {
+                for(int col = 0; col < currentScan[0].length; col++)
+                {
+                    if(currentScan[row][col] == true)
+                    {
+                       accumulator[row][col]++;
+                    }
+                }
+            }
+            
     
+            //Move the monster
+             moveMonster();
+    
+            
+             //keep track of the total number of scans
+            numScans++;
         
-               
-        // detect the monster
-        currentScan[monsterLocationRow][monsterLocationCol] = true;
-        
-        // inject noise into the grid
-        injectNoise();
-        
-        // udpate the accumulator
-        for(int row = 0; row < currentScan.length; row++)
-        {
-            for(int col = 0; col < currentScan[0].length; col++)
-            {
-                if(currentScan[row][col] == true)
-                {
-                   accumulator[row][col]++;
-                }
-            }
-        }
-<<<<<<< HEAD
-        
-                for(int row = 0; row < currentScan.length; row++)
-        {
-            for(int col = 0; col < currentScan[0].length; col++)
-            {
-                if(currentScan[row][col] == true)
-                {
-                   accumulator[row][col]++;
-                }
-            }
-        }
-        
-=======
-         //Move the monster
-         moveMonster();
->>>>>>> origin/master
-
-        
-        // keep track of the total number of scans
-        numScans++;
     }
     
     public void moveMonster()

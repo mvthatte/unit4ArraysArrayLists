@@ -21,7 +21,8 @@ public class RadarViewer
         final int DY = 1;
         Radar radar = new Radar(ROWS, COLS, DX, DY);
         radar.setNoiseFraction(0.10);
-        radar.scan();
+        radar.scan(DX, DY);
+        int numScans = 1;
         
         JFrame frame = new JFrame();
         
@@ -45,13 +46,14 @@ public class RadarViewer
         {
             Thread.sleep(100); // sleep 100 milliseconds (1/10 second)
             
-            radar.scan();
+            radar.scan(DX, DY);
             
             frame.repaint();
             
             radar.moveMonster();
             
             radar.setprevScan();
+
         }
     }
 
