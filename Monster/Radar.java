@@ -110,7 +110,6 @@ public class Radar
                 }
             }
         }
-<<<<<<< HEAD
         
                 for(int row = 0; row < currentScan.length; row++)
         {
@@ -123,10 +122,9 @@ public class Radar
             }
         }
         
-=======
+
          //Move the monster
          moveMonster();
->>>>>>> origin/master
 
         
         // keep track of the total number of scans
